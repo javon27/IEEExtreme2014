@@ -1,3 +1,6 @@
+"""
+pdf-source: rajus-training-English.pdf
+"""
 numCourses, numConstraints = input().split()
 numCourses = int(numCourses)
 numConstraints = int(numConstraints)

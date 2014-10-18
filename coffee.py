@@ -1,3 +1,6 @@
+"""
+pdf-source: coffee-empire-English.pdf
+"""
 layout = []
 w = h = None
 capacity = ['-', 'L', 'M', 'H']
