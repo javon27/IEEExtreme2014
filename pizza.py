@@ -1,3 +1,6 @@
+"""
+pdf-source: resist-our-pizza-English.pdf
+"""
 ingredients = {}
 ingredients['Anchovies'] = 50
 ingredients['Artichoke'] = 60
