@@ -181,12 +181,12 @@ def AND(args):
 
 def AND1(n, a1):
     global memory
-    memory[a1] = n and memory[a1]
+    memory[a1] = memory[a1] and n
 
 
 def AND2(a1, a2):
     global memory
-    memory[a2] = memory[a1] and memory[a2]
+    memory[a2] = memory[a2] and memory[a1]
 
 
 def OR(args):
@@ -250,10 +250,13 @@ def COMP(args):
 def COMP1(n, a1):
     global temp
     a1 = memory[a1]
+    print('COMP1: ' + str(n) + ',' + str(a1))
     if n < a1:
         temp = -1
-    if n > a1:
+    elif n > a1:
         temp = 1
+    else:
+        temp = 0
 
 
 def COMP2(a1, a2):
@@ -262,12 +265,16 @@ def COMP2(a1, a2):
     a2 = memory[a2]
     if a1 < a2:
         temp = -1
-    if a1 > a2:
+    elif a1 > a2:
         temp = 1
+    else:
+        temp = 0
 
 
 def BEQ(label):
     global pc, temp
+    print('beq pc: '+str(pc))
+    print(temp)
     if temp == 0:
         pc = labels[label]
 
@@ -280,6 +287,7 @@ def BNE(label):
 
 def BGT(label):
     global pc
+    print('temp: '+str(temp))
     if temp > 0:
         pc = labels[label]
 
@@ -345,8 +353,11 @@ def main():
     command, args = program[pc]
     while command != 'END':
         run = commandLookUp[command]
+        print('pc: '+str(pc))
+        print('command: '+command+' args: '+args)
         run(args)
         pc += 1
+        print('pc (after): '+str(pc))
         command, args = program[pc]
 
 if __name__ == '__main__':
